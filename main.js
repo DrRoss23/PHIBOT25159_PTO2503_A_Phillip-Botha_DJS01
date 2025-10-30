@@ -1,11 +1,10 @@
-import { renderAll } from './modules/rendercards.js';
+import { renderAll } from './modules/renderCards.js';
 
 /**
- * Phase 1 bootstrap: render podcast previews to the landing page.
- * No filtering or modal behavior is included at this stage.
+ * App bootstrap: renders the landing cards.
+ * Modal behavior is wired inside renderCards.js.
  */
 function start(){
   renderAll();
 }
-
 start();

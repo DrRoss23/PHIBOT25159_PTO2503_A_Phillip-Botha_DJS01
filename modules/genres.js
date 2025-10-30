@@ -10,3 +10,4 @@ export function getGenreLookup(){
   for (const g of genres) out[g.id] = g.title;
   return out;
 }
+

@@ -1,41 +1,22 @@
+// modules/rendercards.js
 import { podcasts } from '../data.js';
 import { formatDate } from './format.js';
 import { getGenreLookup } from './genres.js';
+import { openModal } from './modal/openModal.js';
 
 const genreById = getGenreLookup();
 
-/**
- * Render all podcasts to the #cards container.
- * User stories covered: list, cover, title, seasons, genres, last updated.
- */
-export function renderAll(){
-  renderCards(podcasts);
-}
+/** Render all podcasts to the #cards container. */
+export function renderAll(){ renderCards(podcasts); }
 
-/**
- * Render a list of podcast objects to the #cards container.
- * @param {Array<object>} list
- */
+/** Render a list of podcast objects to the #cards container. */
 export function renderCards(list){
   const container = document.getElementById('cards');
   container.innerHTML = '';
-  for (const p of list){
-    container.appendChild(createCard(p));
-  }
+  for (const p of list){ container.appendChild(createCard(p)); }
 }
 
-/**
- * Create a single podcast card element.
- * @param {object} p
- * @param {number} p.id
- * @param {string} p.title
- * @param {string} p.description
- * @param {number} p.seasons
- * @param {string} p.image
- * @param {number[]} p.genres
- * @param {string} p.updated
- * @returns {HTMLElement}
- */
+/** Create a single podcast card element. */
 function createCard(p){
   const card = document.createElement('article');
   card.className = 'card';
@@ -69,12 +50,11 @@ function createCard(p){
   body.append(h3, meta, chips);
   card.append(img, body);
 
-  // Phase 2 will implement modal open. For now, just log for verification.
-  card.addEventListener('click', () => console.log('Open modal later for:', p.title));
+  // Open modal on click/keyboard
+  card.addEventListener('click', () => openModal(String(p.id), card));
   card.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); card.click(); }
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openModal(String(p.id), card); }
   });
 
   return card;
 }
-
