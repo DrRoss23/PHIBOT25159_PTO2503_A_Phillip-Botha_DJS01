@@ -1,10 +1,13 @@
-import { renderAll } from './modules/renderCards.js';
+// main.js
+import { PodcastApp } from './modules/PodcastApp.js';
 
 /**
- * App bootstrap: renders the landing cards.
- * Modal behavior is wired inside renderCards.js.
+ * Phase 3: bootstrap via a tiny controller class.
+ * Keeps entrypoint readable and follows SRP.
  */
-function start(){
-  renderAll();
+function start() {
+  const app = new PodcastApp({ containerId: 'cards' });
+  app.init();
 }
+
 start();
