@@ -1,8 +1,11 @@
-import { renderAll } from './modules/rendercards.js';   // your filename is "rendercards.js"
-import { initFilter } from './modules/filter.js';
+import { renderAll } from './modules/rendercards.js';
 
+/**
+ * Phase 1 bootstrap: render podcast previews to the landing page.
+ * No filtering or modal behavior is included at this stage.
+ */
 function start(){
-  initFilter();
   renderAll();
 }
+
 start();

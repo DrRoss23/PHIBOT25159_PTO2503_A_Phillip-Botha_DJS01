@@ -1,7 +1,8 @@
 import { genres } from '../data.js';
 
 /**
- * Build { [id]: title } lookup.
+ * Build a simple genre lookup: { [id]: "Genre Name" }.
+ * Using a plain object keeps it beginner-friendly.
  * @returns {{[key:number]: string}}
  */
 export function getGenreLookup(){
